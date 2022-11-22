@@ -1,9 +1,9 @@
 import React from "react";
 import "./Button.css";
 
-const Button = ({ click }) => {
+const Button = ({ click, active = true }) => {
   return (
-    <button className="button" onClick={click}>
+    <button disabled={active} className="button" onClick={click}>
       submit
     </button>
   );

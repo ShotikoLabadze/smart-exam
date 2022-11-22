@@ -7,6 +7,7 @@ function CategoryList() {
   const [category, setCategory] = useState([]);
   const [data, setData] = useState([]);
   const [product, setProduct] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     axios.get("https://dummyjson.com/products/categories").then(function (res) {
@@ -22,17 +23,25 @@ function CategoryList() {
       });
   };
 
+  const changeHandler = (event) => {
+    setData(event.target.value);
+    setIsDisabled(false);
+  };
+
   return (
     <div className="App">
       <div className="select">
-        <select onChange={(e) => setData(e.target.value)}>
+        <select onChange={changeHandler}>
+          <option disabled selected>
+            category
+          </option>
           {category.map((post, index) => (
             <option key={index} value={post}>
               {post}
             </option>
           ))}
         </select>
-        <Button click={submitHandler} />
+        <Button active={isDisabled} click={submitHandler} />
       </div>
 
       <div className="main">

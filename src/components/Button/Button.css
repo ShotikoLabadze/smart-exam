@@ -25,6 +25,12 @@
 .button:hover {
   background-color: #f7fafa;
 }
+.button:disabled,
+.button[disabled] {
+  border: 1px solid #999999;
+  background-color: #9fa9a3;
+  color: #666666;
+}
 
 .button:focus {
   border-color: #008296;
